@@ -42,11 +42,11 @@ app.post('/products', (req, res) => {
     connection.query(sql, [product_name, product_desc, product_price], (error, results) => {
         if (error) {
             // Caso ocorra um erro ao inserir, envia uma resposta de erro com status 500
-            res.status(500).send('Error adding user.');
+            res.status(500).send('Error adding product.');
             return;
         }
         // Envia uma resposta de sucesso com status 201 indicando que o usuário foi adicionado
-        res.status(201).send('User added succesfully.');
+        res.status(201).send('Product added succesfully.');
     });
 });
 
@@ -56,7 +56,7 @@ app.get('/products', (req, res) => {
     connection.query('SELECT * FROM products', (error, results) => {
         if (error) {
             // Caso ocorra um erro ao obter os usuários, envia uma resposta de erro com status 500
-            res.status(500).send('Error getting users.');
+            res.status(500).send('Error getting Products.');
             return;
         }
         // Envia a lista de usuários como uma resposta JSON
@@ -72,7 +72,7 @@ app.get('/products/:product_id', (req, res) => {
     connection.query('SELECT * FROM products WHERE product_id = ?', [product_id], (error, results) => {
         if (error) {
             // Caso ocorra um erro ao obter o usuário, envia uma resposta de erro com status 500
-            res.status(500).send('Error getting user.');
+            res.status(500).send('Error getting product.');
             return;
         }
         // Envia os dados do usuário específico como uma resposta JSON (primeiro resultado)
@@ -92,11 +92,11 @@ app.put('/products/:product_id', (req, res) => {
     connection.query(sql, [product_name, product_desc, product_price, id], (error, results) => {
         if (error) {
             // Caso ocorra um erro ao atualizar, envia uma resposta de erro com status 500
-            res.status(500).send('Error updating user.');
+            res.status(500).send('Error updating product.');
             return;
         }
         // Envia uma mensagem de sucesso indicando que o usuário foi atualizado
-        res.send('User updated successfully.');
+        res.send('Product updated successfully.');
     });
 });
 
@@ -108,11 +108,11 @@ app.delete('/products/:product_id', (req, res) => {
     connection.query('DELETE FROM products WHERE product_id = ?', [product_id], (error, results) => {
         if (error) {
             // Caso ocorra um erro ao deletar, envia uma resposta de erro com status 500
-            res.status(500).send('Error deleting user.');
+            res.status(500).send('Error deleting product.');
             return;
         }
         // Envia uma mensagem de sucesso indicando que o usuário foi deletado
-        res.send('User deleted successfully.');
+        res.send('Product deleted successfully.');
     });
 });
 
