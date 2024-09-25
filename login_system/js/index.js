@@ -13,7 +13,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   const messageElement = document.getElementById("message");
   if (response.ok) {
-    window.location.href = "protected.html";
+    window.location.href = "users.html";
   } else {
     const errorMessage = await response.text();
     messageElement.textContent = errorMessage;
