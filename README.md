@@ -1,3 +1,3 @@
 # UC13-WebWithSQL
 
-Discipline for learning to do CRUD in the back and frontend, also using APIs.
+Subject to learning how to perform CRUD operations in both the backend and frontend, as well as using APIs.
