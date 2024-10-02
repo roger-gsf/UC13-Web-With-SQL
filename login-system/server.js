@@ -1,8 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
+const cors = require("cors")
 const app = express();
+
 app.use(bodyParser.json());
+// Usamos o CORS para permitir que o frontend possa se conectar com o backend.
+// Define quais páginas da web podem ter acesso.
+app.use(cors({
+  origin: 'http://localhost'
+}));
 
 // Conexão com o banco de dados
 const db = mysql.createConnection({
@@ -13,10 +20,10 @@ const db = mysql.createConnection({
 });
 
 app.post("/login", (req, res) => {
-  const { email, password } = req.body;
+  const { user_email, user_password } = req.body;
   db.query(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
-    [email, password],
+    "SELECT * FROM users WHERE user_email = ? AND user_password = ?",
+    [user_email, user_password],
     (err, results) => {
       if (err) throw err;
       if (results.length > 0) {
@@ -29,10 +36,10 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-  const { email, password } = req.body;
+  const { user_email, user_password } = req.body;
   db.query(
-    "INSERT INTO users (email, password) VALUES (?, ?)",
-    [email, password],
+    "INSERT INTO users (user_email, user_password) VALUES (?, ?)",
+    [user_email, user_password],
     (err, result) => {
       if (err) throw err;
       res.sendStatus(201); // Usuário registrado com sucesso
@@ -41,5 +48,5 @@ app.post("/register", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
+  console.log("Server running in port 3000");
 });

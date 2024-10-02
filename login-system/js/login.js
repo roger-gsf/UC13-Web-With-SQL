@@ -19,3 +19,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     messageElement.textContent = errorMessage;
   }
 });
+
+// Async functions: Não interrompem o funcionamento do código
+// await: Basicamente define que a variável deve esperar 
+// determinada coisa acontecer (um retorno por exemplo) para executar algo.
