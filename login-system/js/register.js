@@ -1,4 +1,4 @@
-document.getElementById("sign-upForm").addEventListener("submit", async (e) => {
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const email = document.getElementById("email").value;
@@ -14,7 +14,7 @@ document.getElementById("sign-upForm").addEventListener("submit", async (e) => {
   if (response.ok) {
     messageElement.textContent = "User registered successfuly!";
     setTimeout(() => {
-      window.location.href = "../html/users.html";
+      window.location.href = "../login.html";
     }, 2000);
   } else {
     const errorMessage = await response.text();
