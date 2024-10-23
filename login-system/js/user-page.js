@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         if (response.ok) {
-            const user = await response.json();
-            document.getElementById('userEmail').textContent = user.user_email;
+            const userData = await response.json();
+            document.getElementById('userEmail').textContent = userData.user_email;
         } else {
             console.error('Error getting user:', response.statusText);
             window.location.href = '../login.html';
